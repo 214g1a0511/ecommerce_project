@@ -10,6 +10,14 @@ users_Router.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
   try {
     const userID = generateID();
+    if (!username || !email || !password) {
+      return res.status(400).send('Username, email, and password are required');
+    }
+    const user_exists=await usersModel.find({email:{$exists:true}})
+    console.log("user",user_exists)
+    if(user_exists.email===email){
+      return res.status(400).send({msg:"user already exists!!"})
+    }
     // console.log("userID", userID);
     bcrypt.hash(password, 5, async (err, hash) => {
       const new_user = new usersModel({
@@ -40,7 +48,7 @@ users_Router.post("/login", async (req, res) => {
     if (passwordMatch) {
       const token = jwt.sign({ userID: user.userID, email: email }, "bhanu");
       console.log(token);
-      return res.send({ msg: "Login Successful" });
+      return res.send({ msg: "Login Successful",token });
     }
     console.log("userID", user.userID);
     // console.log("secret key",process.env.SECRET_KEY)

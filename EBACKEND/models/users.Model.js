@@ -1,18 +1,18 @@
 const mongoose=require("mongoose")
 const userSchema=new mongoose.Schema({
-    "userID":{
+    userID:{
         type:String,
 
     },
-    "username":{
+    username:{
         type:String,
         required:true,
     },
-    "email":{
+    email:{
         type:String,
         required:true,
     },
-    "password":{
+    password:{
         type:String,
         required:true,
     }

@@ -51,4 +51,18 @@ console.log(req.body)
   }
 });
 
+
+
+cart_Router.get("/getItems",verifyToken,async(req,res)=>{
+    try {
+        const items=await cartModel.find();
+        console.log(items)
+        res.status(200).send(items)
+        
+    } catch (error) {
+        res.status(500).send(error)
+        
+    }
+})
+
 module.exports = { cart_Router };

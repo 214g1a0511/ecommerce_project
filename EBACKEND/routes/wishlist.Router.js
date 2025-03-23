@@ -35,6 +35,16 @@ wishlist_Router.delete("/delete/:id",verifyToken,async(req,res)=>{
         
     }
 })
+wishlist_Router.get("/getItems",verifyToken,async(req,res)=>{
+    try {
+        const items=await wishlistModel.find();
+        res.status(200).send(items)
+        
+    } catch (error) {
+        res.status(500).send(error)
+        
+    }
+})
 
 
 module.exports={wishlist_Router}

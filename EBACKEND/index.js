@@ -7,6 +7,8 @@ const { cart_Router } = require("./routes/cart.Router")
 const { wishlist_Router } = require("./routes/wishlist.Router")
 const app=express();
 
+
+app.use(cors())
 app.use(express.json())
 app.use("/products",product_Router)
 app.use("/users",users_Router)
