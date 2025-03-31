@@ -10,10 +10,7 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState({
     cPassword: "",
   });
-  // const handlePassword=(e)=>{
-  //   const{name,value}=e.target;
-  //   setConfirmPassword({[name]:value})
-  // }
+  
   console.log(confirmPassword);
 
   const handleChange = (e) => {
@@ -89,7 +86,6 @@ const Register = () => {
             id="exampleInputPassword2"
             name="confirmpassword"
             onChange={(e) => setConfirmPassword(e.target.value)}
-            // value={confirmPassword.cPassword}
           />
         </div>
 

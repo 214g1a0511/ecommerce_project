@@ -196,7 +196,7 @@ const Dashboard = () => {
           <div className="row">
             {currentProducts.map((product) => (
               <div className="col-4" key={product.id}>
-                <Card props={product} />
+                <Card props={product} showQuantity={false}/>
               </div>
             ))}
           </div>

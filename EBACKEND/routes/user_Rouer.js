@@ -4,7 +4,6 @@ const { usersModel } = require("../models/users.Model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { generateID } = require("../generateIDS/generateID");
-// require("dotnev").config();
 
 users_Router.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
@@ -18,7 +17,6 @@ users_Router.post("/register", async (req, res) => {
     if(user_exists.email===email){
       return res.status(400).send({msg:"user already exists!!"})
     }
-    // console.log("userID", userID);
     bcrypt.hash(password, 5, async (err, hash) => {
       const new_user = new usersModel({
         userID: userID,
@@ -51,7 +49,6 @@ users_Router.post("/login", async (req, res) => {
       return res.send({ msg: "Login Successful",token });
     }
     console.log("userID", user.userID);
-    // console.log("secret key",process.env.SECRET_KEY)
 
     return res.send({ msg: "Invaild Credentials" });
   } catch (error) {

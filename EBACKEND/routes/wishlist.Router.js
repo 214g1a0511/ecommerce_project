@@ -13,7 +13,6 @@ wishlist_Router.post("/add",verifyToken,async(req,res)=>{
         res.status(200).send(new_item)
         
     } catch (error) {
-        // console.log(error)
         res.status(500).send(error)
         
     }
@@ -24,9 +23,8 @@ wishlist_Router.post("/add",verifyToken,async(req,res)=>{
 
 wishlist_Router.delete("/delete/:id",verifyToken,async(req,res)=>{
     const deleteID=req.params.id;
-    // console.log(deleteID)
     try {
-        const delete_item=wishlistModel.findByIdAndDelete(deleteID)
+        const delete_item=await wishlistModel.findByIdAndDelete(deleteID)
         res.status(200).send({msg:"removed from wishlist"})
         
     } catch (error) {

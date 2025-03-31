@@ -7,7 +7,6 @@ const AuthContext = ({ children }) => {
   const[loginToken,setLoginToken]=useState()
   useEffect(() => {
     const token = localStorage.getItem('Authorization');
-    // console.log(token);
     setLoginToken(token)
 
     if (token) {

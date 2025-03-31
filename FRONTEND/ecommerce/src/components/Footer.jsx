@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 const Footer = () => {
   const [email,setEmail]=useState();
-  // console.log(email)
   const handleClick=(e)=>{
     e.preventDefault();
     if(email==="" ||email===undefined){

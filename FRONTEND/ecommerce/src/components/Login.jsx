@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { FaEye, FaEyeSlash } from "react-icons/fa"; // Importing eye icons from react-icons
+import { FaEye, FaEyeSlash } from "react-icons/fa"; 
 
 const Login = () => {
   const [formDetails, setFormDetails] = useState({
@@ -9,10 +9,10 @@ const Login = () => {
     password: "",
   });
 
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+  const [showPassword, setShowPassword] = useState(false); 
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword); // Toggle showPassword state
+    setShowPassword(!showPassword); 
   };
 
   const handleChange = (e) => {
@@ -53,7 +53,7 @@ const Login = () => {
           </label>
           <div className="input-group">
             <input
-              type={showPassword ? "text" : "password"} // Change input type based on showPassword state
+              type={showPassword ? "text" : "password"} 
               className="form-control"
               id="exampleInputPassword1"
               name="password"
@@ -61,11 +61,10 @@ const Login = () => {
             />
             <span
               className="input-group-text"
-              onClick={togglePasswordVisibility} // Toggle visibility when the icon is clicked
+              onClick={togglePasswordVisibility} 
               style={{ cursor: "pointer" }}
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}{" "}
-              {/* Show eye slash or eye icon */}
             </span>
           </div>
         </div>

@@ -47,7 +47,6 @@ product_Router.get("/getCategoryProducts", verifyToken, async (req, res) => {
   const category = req.query.category;
   try {
     const category_products = await productModel.find({ category });
-    // console.log(category_products)
     res.status(200).send(category_products);
   } catch (error) {
     return res.status(500).send(error);
@@ -59,12 +58,10 @@ product_Router.get("/sortByPrice/:type", verifyToken, async (req, res) => {
   try {
     if (type === "low-to-high") {
       const items = await productModel.find().sort({ price: 1 });
-    //   console.log(items);
     res.status(200).send(items)
     }
     else if(type==="high-to-low"){
         const items = await productModel.find().sort({ price: -1 });
-    //   console.log(items);
     res.status(200).send(items)
 
 
@@ -85,12 +82,10 @@ product_Router.get("/sortByRating/:type",verifyToken,async(req,res)=>{
     try {
         if(type==="low-to-high"){
             const items=await productModel.find().sort({rating:1})
-            // console.log(items)
             res.status(200).send(items)
         }
         else if(type==="high-to-low"){
             const items=await productModel.find().sort({rating:-1})
-            // console.log(items)
             res.status(200).send(items)
         }
         else{
@@ -109,7 +104,6 @@ product_Router.get("/search/:keyword",verifyToken,async(req,res)=>{
         let regex = new RegExp(`^${keyword}`);
 
         const items=await productModel.find({title:{ $regex: regex } })
-        // console.log(items)
         if(items.length===0){
             return res.status(400).send({msg:"Product not Found"})
         }
@@ -120,6 +114,19 @@ product_Router.get("/search/:keyword",verifyToken,async(req,res)=>{
         
     }
 
+})
+
+product_Router.get("/singleItem/:name",async(req,res)=>{
+  const name=req.params.name ;
+  console.log(name  )
+  try {
+    const title=await productModel.find({title:name})
+    res.status(200).send(title)
+    
+  } catch (error) {
+    res.status(500).send(error)
+    
+  }
 })
 
 
